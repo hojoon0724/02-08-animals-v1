@@ -26,24 +26,50 @@ app.use("/public", express.static("public"));
 // Routes INDUCESS
 // -----------------------------------------------------
 // Index
+app.get("/index", async (req, res) => {
+  let allAnimals = await Animal.find({});
+  res.send(allAnimals);
+});
 
 // New
+app.get("/index/new", (req, res) => {
+  res.render("new.ejs");
+});
 
 // Delete
+app.delete("/index/:id", async (req, res) => {
+  let deletedAnimal = await Animal.findByIdAndDelete(req.params.id);
+  res.send("deleted");
+  // res.redirect("/index"); // redirecting after first res doesn't work
+});
 
 // Update
+app.put("/index/:id", async (req, res) => {
+  const id = req.params.id;
+  const editedAnimal = req.body;
+  let updatedAnimalData = await Animal.findByIdAndUpdate(id, editedAnimal, { new: true });
+  res.send(updatedAnimalData);
+});
 
 // Create
-app.post("/animals", (req, res) => {
-  let animalEntry = Animal.create(req.body);
-  res.send(console.log(animalEntry));
+app.post("/index", async (req, res) => {
+  let animalEntry = await Animal.create(req.body);
+  res.send(animalEntry);
 });
 
 // Edit
+app.get("/index/:id/edit", async (req, res) => {
+  let foundAnimal = await Animal.findById(req.params.id);
+  res.render("edit.ejs", { foundAnimal });
+});
 
 // Seed
 
 // Show
+app.get("/index/:id", async (req, res) => {
+  let animalToShow = await Animal.findById(req.params.id);
+  res.send(animalToShow);
+});
 
 // -----------------------------------------------------
 // GET requests
