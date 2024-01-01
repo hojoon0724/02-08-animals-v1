@@ -5,13 +5,14 @@ const express = require("express");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
 require("dotenv").config();
-require(".config/db.js");
+require("./config/db.js");
 
 // -----------------------------------------------------
 // Application Object
 // -----------------------------------------------------
 const app = express();
 const { PORT = 3013 } = process.env;
+const Animal = require("./models/animalsConstructor.js");
 
 // -----------------------------------------------------
 // Middleware
@@ -33,6 +34,10 @@ app.use("/public", express.static("public"));
 // Update
 
 // Create
+app.post("/animals", (req, res) => {
+  let animalEntry = Animal.create(req.body);
+  res.send(console.log(animalEntry));
+});
 
 // Edit
 
