@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 require("dotenv").config();
 require("./config/db.js");
+const seedData = require("./models/seed.js");
 
 // -----------------------------------------------------
 // Application Object
@@ -21,6 +22,13 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use("/public", express.static("public"));
+app.use((req, res, next) => {
+  req.model = {
+    Animal,
+    seedData,
+  };
+  next();
+});
 
 // -----------------------------------------------------
 // Routes INDUCESS
@@ -64,6 +72,12 @@ app.get("/index/:id/edit", async (req, res) => {
 });
 
 // Seed
+app.get("/index/seed", async (req, res) => {
+  await Animal.deleteMany({});
+  await Animal.create(req.model.seedData);
+  let allAnimals = await Animal.find({});
+  res.send(allAnimals);
+});
 
 // Show
 app.get("/index/:id", async (req, res) => {

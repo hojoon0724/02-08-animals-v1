@@ -8,7 +8,7 @@ const animalsSchema = new mongoose.Schema({
   species: { type: String, required: true },
   extinct: { type: Boolean, required: true },
   location: { type: String, required: true },
-  lifeExpectancy: { type: Number, required: true },
+  lifeExpectancy: { type: String, required: true },
 });
 
 // Use the mongoose Schema as constructor
