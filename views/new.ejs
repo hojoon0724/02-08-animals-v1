@@ -2,6 +2,28 @@
 <html lang="en">
   <%- include("./partials/head.ejs") %>
   <body>
-    NEW ENTRY PAGE
+    <div class="top-container">
+      <form action="/index/" method="post">
+        <div class="page-title"><input type="text" name="species" placeholder="Animal" class="edit-species" /></div>
+        <div class="animal-details-container">
+          <div class="show-location-container">
+            <div class="show-location-label">Location:</div>
+            <div class="show-location"><input type="text" name="location" class="edit-data" /></div>
+          </div>
+          <div class="show-extinct-container">
+            <div class="show-extinct-label">Extinct:</div>
+            <div class="show-extinct"><input type="checkbox" name="extinct" class="edit-data" /></div>
+          </div>
+          <div class="show-lifespan-container">
+            <div class="show-lifespan-label">Life Expectancy:</div>
+            <div class="show-lifespan"><input type="text" name="lifeExpectancy" class="edit-data" /></div>
+          </div>
+          <div class="show-buttons-container">
+            <a href="/index/" class="cancel-button">Cancel</a>
+            <input type="submit" value="Add" id="update" />
+          </div>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

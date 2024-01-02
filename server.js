@@ -48,10 +48,7 @@ app.get("/index/new", (req, res) => {
 app.delete("/index/:id/", async (req, res) => {
   let deletedAnimal = await Animal.findByIdAndDelete(req.params.id);
   res.render("deleted.ejs");
-  // res.send("deleted");
-  // res.redirect("/index"); // redirecting after first res doesn't work
 });
-// app.get("/deleted", (req, res) => {});
 
 // Update
 app.put("/index/:id", async (req, res) => {
@@ -63,8 +60,14 @@ app.put("/index/:id", async (req, res) => {
 
 // Create
 app.post("/index", async (req, res) => {
-  let animalEntry = await Animal.create(req.body);
-  res.render("index.ejs");
+  if (req.body.extinct === "on") {
+    req.body.extinct = true;
+  } else {
+    req.body.extinct = false;
+  }
+  console.log(req.body);
+  let animalToShow = await Animal.create(req.body);
+  res.render("show.ejs", { animalToShow });
 });
 
 // Edit
