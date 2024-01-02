@@ -19,7 +19,9 @@
         </div>
         <div class="show-buttons-container">
           <a href="/index/<%=animalToShow._id %>/edit" class="edit-button">Edit</a>
-          <a href="/index/<%=animalToShow._id %>/delete" class="delete-button">Delete</a>
+          <form class="index-form" action="/index/<%=animalToShow._id %>?_method=DELETE" method="post">
+            <input type="submit" value="Delete" id="delete-animal" />
+          </form>
         </div>
       </div>
       <div class="back-button"><a href="/index">Go Back</a></div>
