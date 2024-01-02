@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 // Index
 app.get("/index", async (req, res) => {
   let allAnimals = await Animal.find({});
-  res.send(allAnimals);
+  res.render("index.ejs", { allAnimals });
 });
 
 // New
@@ -56,13 +56,13 @@ app.put("/index/:id", async (req, res) => {
   const id = req.params.id;
   const editedAnimal = req.body;
   let updatedAnimalData = await Animal.findByIdAndUpdate(id, editedAnimal, { new: true });
-  res.send(updatedAnimalData);
+  res.redirect(`/index/${updatedAnimalData._id}`);
 });
 
 // Create
 app.post("/index", async (req, res) => {
   let animalEntry = await Animal.create(req.body);
-  res.send(animalEntry);
+  res.render("index.ejs");
 });
 
 // Edit
@@ -76,20 +76,20 @@ app.get("/index/seed", async (req, res) => {
   await Animal.deleteMany({});
   await Animal.create(req.model.seedData);
   let allAnimals = await Animal.find({});
-  res.send(allAnimals);
+  res.redirect("index.ejs");
 });
 
 // Show
 app.get("/index/:id", async (req, res) => {
   let animalToShow = await Animal.findById(req.params.id);
-  res.send(animalToShow);
+  res.render("show.ejs", { animalToShow });
 });
 
 // -----------------------------------------------------
 // GET requests
 // -----------------------------------------------------
 app.get("/", (req, res) => {
-  res.send(`root response`);
+  res.redirect("/index");
 });
 
 // -----------------------------------------------------

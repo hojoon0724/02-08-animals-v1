@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+  <body>
+    <div class="top-container">
+      <div class="page-title">
+        <div class="entries-container">
+          <% for (i=0; i < allAnimals.length; i++) { %>
+          <div class="animal-container"><%= allAnimals[i].species %></div>
+          <div class="animal-id"><%= allAnimals[i]._id %></div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
