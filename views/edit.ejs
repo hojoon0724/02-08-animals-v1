@@ -2,7 +2,28 @@
 <html lang="en">
   <%- include("./partials/head.ejs") %>
   <body>
-    <%= foundAnimal %><br />
-    <%= foundAnimal.location %>
+    <div class="top-container">
+      <form action="/index/<%=foundAnimal. id %>?_method=PUT" method="post">
+        <div class="page-title"><input type="text" name="species" value="<%= foundAnimal.species %>" class="edit-species" /></div>
+        <div class="animal-details-container">
+          <div class="show-location-container">
+            <div class="show-location-label">Location:</div>
+            <div class="show-location"><input type="text" name="location" value="<%= foundAnimal.location %>" class="edit-data" /></div>
+          </div>
+          <div class="show-extinct-container">
+            <div class="show-extinct-label">Extinct:</div>
+            <div class="show-extinct"><input type="checkbox" name="extinct" value="<%= foundAnimal.extinct %>" class="edit-data" /></div>
+          </div>
+          <div class="show-lifespan-container">
+            <div class="show-lifespan-label">Life Expectancy:</div>
+            <div class="show-lifespan"><input type="text" name="lifeExpectancy" value="<%= foundAnimal.lifeExpectancy %>" class="edit-data" /></div>
+          </div>
+          <div class="show-buttons-container">
+            <a href="/index/<%=foundAnimal._id %>/" class="cancel-button">Discard</a>
+            <input type="submit" value="Update" id="update" />
+          </div>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

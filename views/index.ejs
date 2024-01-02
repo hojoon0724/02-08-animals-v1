@@ -3,13 +3,28 @@
   <%- include("./partials/head.ejs") %>
   <body>
     <div class="top-container">
-      <div class="page-title">
-        <div class="entries-container">
-          <% for (i=0; i < allAnimals.length; i++) { %>
-          <div class="animal-container"><%= allAnimals[i].species %></div>
-          <div class="animal-id"><%= allAnimals[i]._id %></div>
-          <% } %>
+      <div class="page-title">Animals</div>
+      <div class="entries-container">
+        <% for (i=0; i < allAnimals.length; i++) { %>
+        <div class="animal-container">
+          <a href="/index/<%=allAnimals[i]._id %>">
+            <div class="animal-location-container">
+              <div class="location-label">Location:</div>
+              <div class="location"><%= allAnimals[i].location %></div>
+            </div>
+            <div class="animal-name-container">
+              <div class="species-label">Species:</div>
+              <div class="species"><%= allAnimals[i].species %></div>
+            </div>
+          </a>
+          <div class="index-buttons-container">
+            <a href="/index/<%=allAnimals[i]._id %>/edit" class="edit-button">Edit</a>
+            <form class="index-form" action="/index/<%=allAnimals[i]._id %>?_method=DELETE" method="post">
+              <input type="submit" value="Delete" id="delete-animal" />
+            </form>
+          </div>
         </div>
+        <% } %>
       </div>
     </div>
   </body>

@@ -2,7 +2,27 @@
 <html lang="en">
   <%- include("./partials/head.ejs") %>
   <body>
-    <%= animalToShow %><br />
-    <%= animalToShow.location %>
+    <div class="top-container">
+      <div class="page-title"><%= animalToShow.species %></div>
+      <div class="animal-details-container">
+        <div class="show-location-container">
+          <div class="show-location-label">Location:</div>
+          <div class="show-location"><%= animalToShow.location %></div>
+        </div>
+        <div class="show-extinct-container">
+          <div class="show-extinct-label">Extinct:</div>
+          <div class="show-extinct"><%= animalToShow.extinct %></div>
+        </div>
+        <div class="show-lifespan-container">
+          <div class="show-lifespan-label">Life Expectancy:</div>
+          <div class="show-lifespan"><%= animalToShow.lifeExpectancy %></div>
+        </div>
+        <div class="show-buttons-container">
+          <a href="/index/<%=animalToShow._id %>/edit" class="edit-button">Edit</a>
+          <a href="/index/<%=animalToShow._id %>/delete" class="delete-button">Delete</a>
+        </div>
+      </div>
+      <div class="back-button"><a href="/index">Go Back</a></div>
+    </div>
   </body>
 </html>

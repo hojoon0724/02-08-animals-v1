@@ -45,7 +45,7 @@ app.get("/index/new", (req, res) => {
 });
 
 // Delete
-app.delete("/index/:id", async (req, res) => {
+app.delete("/index/:id/", async (req, res) => {
   let deletedAnimal = await Animal.findByIdAndDelete(req.params.id);
   res.send("deleted");
   // res.redirect("/index"); // redirecting after first res doesn't work
