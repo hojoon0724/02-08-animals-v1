@@ -12,7 +12,7 @@
           </div>
           <div class="show-extinct-container">
             <div class="show-extinct-label">Extinct:</div>
-            <div class="show-extinct"><input type="checkbox" name="extinct" value="<%= foundAnimal.extinct %>" class="edit-data" /></div>
+            <div class="show-extinct"><input type="checkbox" name="extinct" <% if (foundAnimal.extinct===true) { %> checked <% } %> class="edit-data" style="height: 20px" /></div>
           </div>
           <div class="show-lifespan-container">
             <div class="show-lifespan-label">Life Expectancy:</div>

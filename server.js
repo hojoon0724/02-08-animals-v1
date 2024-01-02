@@ -52,6 +52,12 @@ app.delete("/index/:id/", async (req, res) => {
 
 // Update
 app.put("/index/:id", async (req, res) => {
+  console.log(req.body.extinct);
+  if (req.body.extinct === "on") {
+    req.body.extinct = true;
+  } else {
+    req.body.extinct = false;
+  }
   const id = req.params.id;
   const editedAnimal = req.body;
   let updatedAnimalData = await Animal.findByIdAndUpdate(id, editedAnimal, { new: true });

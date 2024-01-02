@@ -178,6 +178,12 @@ body {
 .animal-name-container {
   padding: 16px;
   height: 100%;
+  transition: 0.3s ease-in-out;
+}
+
+.animal-name-container:hover {
+  background-color: var(--primary95);
+  transition: 0.3s ease-in-out;
 }
 
 .species-label {
@@ -234,7 +240,6 @@ body {
   color: var(--error-dark);
   width: 50%;
   padding: 8px;
-  height: 24px;
   transition: 0.3s ease-in-out;
   border: none;
   font-size: 1em;
@@ -244,6 +249,7 @@ body {
   background-color: var(--error-container-dark);
   color: var(--error-dark);
   width: 100%;
+  height: 100%;
   padding: 8px;
   transition: 0.3s ease-in-out;
   border: none;
@@ -274,6 +280,7 @@ body {
 
 .index-form {
   width: 50%;
+  height: 100%;
 }
 
 .animal-details-container {
@@ -352,4 +359,12 @@ body {
   background-color: var(--primary-container-dark);
   color: var(--on-primary-container-dark);
   padding: 8px 24px;
+  transition: 0.3s ease-in-out;
+}
+
+.add-new-animal a:hover {
+  background-color: var(--on-primary-container-dark);
+  color: var(--primary-container-dark);
+  padding: 8px 24px;
+  transition: 0.3s ease-in-out;
 }
