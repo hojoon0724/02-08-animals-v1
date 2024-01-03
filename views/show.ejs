@@ -27,4 +27,10 @@
       <div class="back-button"><a href="/index">Home</a></div>
     </div>
   </body>
+  <script>
+    let $extinctionStatus = $(".show-extinct");
+    if ($extinctionStatus.html() === "Yes") {
+      $extinctionStatus.addClass("extinct");
+    }
+  </script>
 </html>

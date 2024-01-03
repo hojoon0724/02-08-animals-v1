@@ -318,6 +318,10 @@ body {
   box-sizing: border-box;
 }
 
+.extinct {
+  color: red;
+}
+
 .show-buttons-container {
   display: flex;
   align-items: center;
