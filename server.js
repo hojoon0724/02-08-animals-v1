@@ -52,7 +52,6 @@ app.delete("/index/:id/", async (req, res) => {
 
 // Update
 app.put("/index/:id", async (req, res) => {
-  console.log(req.body.extinct);
   if (req.body.extinct === "on") {
     req.body.extinct = true;
   } else {
@@ -71,7 +70,6 @@ app.post("/index", async (req, res) => {
   } else {
     req.body.extinct = false;
   }
-  console.log(req.body);
   let animalToShow = await Animal.create(req.body);
   res.render("show.ejs", { animalToShow });
 });

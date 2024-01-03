@@ -8,6 +8,6 @@ const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL);
 
 // connection status listener
-mongoose.connection.on("error", (err) => console.log("there's an error"));
-mongoose.connection.on("connected", (err) => console.log("connected to mongo"));
-mongoose.connection.on("disconnected", (err) => console.log("disconnected to mongo"));
+mongoose.connection.on("error", (error) => console.log("there's an error: " + error));
+mongoose.connection.on("connected", () => console.log("connected to mongo"));
+mongoose.connection.on("disconnected", () => console.log("disconnected to mongo"));
